@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>购物车</title>
+    <link rel="stylesheet" href="../vendor/bootstrap3/css/bootstrap.css">
+</head>
+<body ng-app>
+
+   <div ng-controller="cartController" class="container" >
+        <table class="table" ng-show="cart.length">
+             <thead>
+                <tr>
+                     <th>产品编号</th>
+                     <th>产品名字</th>
+                     <th>购买数量</th>
+                     <th>产品单价</th>
+                     <th>产品总价</th>
+                     <th>操作</th>
+                </tr>
+             </thead>
+             <tbody>
+                <tr ng-repeat="item in cart">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>
+                       <button type="button" ng-click="reduce(item.id)" class="btn btn-primary">-</button>
+                        <input type="text" value="{{item.quantity}}" ng-model="item.quantity">
+                        <button type="button" ng-click="add(item.id)" class="btn btn-primary">+</button>
+                    </td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.price * item.quantity}}</td>
+                    <td>
+                        <button type="button" class="btn btn-danger" ng-click="remove(item.id)">移除</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>总购买价</td>
+                    <td>{{totalPrice()}}</td>
+                    <td>总购买数量</td>
+                    <td>{{totalQuantity()}}</td>
+                    <td colspan="2">
+                        <button type="button" class="btn btn-danger" ng-click="cart ={}">清空购物车</button>
+                    </td>
+                </tr>
+             </tbody>
+        </table>
+          <p ng-show="!cart.length"><h3>您的购物车为空</h3></p>
+   </div>
+  <script type="text/javascript" src="app/index.js"></script>
+   <script type="text/javascript" src="../vendor/angular/angularjs.js"></script>
+
+</body>
+</html>
