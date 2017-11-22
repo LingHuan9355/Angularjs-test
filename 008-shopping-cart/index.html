@@ -28,15 +28,15 @@
                         <input type="text" value="{{item.quantity}}" ng-model="item.quantity">
                         <button type="button" ng-click="add(item.id)" class="btn btn-primary">+</button>
                     </td>
-                    <td>{{item.price}}</td>
-                    <td>{{item.price * item.quantity}}</td>
+                    <td>{{item.price | currency:'￥'}}</td>
+                    <td>{{item.price * item.quantity | currency:'￥'}}</td>
                     <td>
                         <button type="button" class="btn btn-danger" ng-click="remove(item.id)">移除</button>
                     </td>
                 </tr>
                 <tr>
                     <td>总购买价</td>
-                    <td>{{totalPrice()}}</td>
+                    <td>{{totalPrice() | currency:'￥' }}</td>
                     <td>总购买数量</td>
                     <td>{{totalQuantity()}}</td>
                     <td colspan="2">
